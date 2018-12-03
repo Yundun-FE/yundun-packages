@@ -31,7 +31,7 @@ export default create({
     }
   },
 
-  components: {},
+  components: { ConsolePageLayout },
 
   computed: {},
 
@@ -41,7 +41,7 @@ export default create({
       // const data = await 
       // const {list = []} = data
       // const total = parseInt(data.total, 10)
-      this.$refs.dmData.init({ total })
+      // this.$refs.dmData.init({ total })
       this.loading = false
     }
   }
