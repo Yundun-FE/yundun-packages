@@ -1,9 +1,12 @@
-<style lang="postcss">
-</style>
-
 <template>
-  <console-page-layout :title="title" :class="b()">
-    <DmData ref="dmData" @init="init">
+  <console-page-layout
+    :title="title"
+    :class="b()"
+  >
+    <DmData
+      ref="dmData"
+      @init="init"
+    >
       <yd-table :loading="loading">
         <el-table :data="list">
           <el-table-column></el-table-column>
@@ -17,6 +20,8 @@
 import ConsolePageLayout from 'common/components/layout/console-page-layout'
 import DmData from 'common/components/DmData/DmData'
 import create from 'common/utils/create-basic'
+import Fetch from 'common/api/fetch'
+import { formatList, mergeParams } from 'common/utils/response'
 
 export default create({
   name: '',
@@ -27,7 +32,8 @@ export default create({
     return {
       title: '',
       loading: true,
-      list: []
+      list: [],
+      params: {}
     }
   },
 
@@ -36,13 +42,19 @@ export default create({
   computed: {},
 
   methods: {
+    handleSearch() {
+      this.$refs.dmData.initPage()
+    },
+
     async init(params) {
       this.loading = true
-      // const data = await 
-      // const {list = []} = data
-      // const total = parseInt(data.total, 10)
-      // this.$refs.dmData.init({ total })
-      this.loading = false
+      try {
+        // const { list, total } = formatList(await Fetch.get('', mergeParams(params, this.params)))
+        // this.list = list
+        // this.$refs.dmData.init({ total })
+      } finally {
+        this.loading = false
+      }
     }
   }
 })
