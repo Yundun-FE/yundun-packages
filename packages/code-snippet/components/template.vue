@@ -10,6 +10,8 @@ import create from 'common/utils/create-basic'
 
 export default create({
   name: '',
+
+  components: {},
   
   props: {},
 
@@ -17,7 +19,6 @@ export default create({
     return {}
   },
 
-  components: {},
 
   computed: {},
 
