@@ -12,13 +12,12 @@ export default create({
   name: '',
 
   components: {},
-  
+
   props: {},
 
   data() {
     return {}
   },
-
 
   computed: {},
 
