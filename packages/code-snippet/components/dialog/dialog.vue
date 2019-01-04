@@ -54,21 +54,23 @@
 import create from 'common/utils/create-basic'
 import Dialog from 'common/components/Dialog/Dialog'
 import SelectMultiple from 'common/components/Select/SelectMultiple'
-import LABEL from '../constants/label'
-import { FORM, RULES } from './form'
+// import LABEL from '../constants/label'
+// import { FORM, RULES } from './form'
 import { deepClone } from 'common/utils'
 // import { labelView } from 'common/service/filter'
 // import { formatLabel } from 'common/utils/form'
 
+const FORM = {}
+
 export default create({
-  name: 'dialog',
+  name: 'AddPropertyDialog',
 
   components: { Dialog, SelectMultiple },
 
   data() {
     return {
-      RULES,
-      LABEL,
+      // RULES,
+      // LABEL,
       open: false,
       mode: '',
       form: {}
@@ -77,7 +79,7 @@ export default create({
 
   computed: {
     title() {
-      const name = ''
+      const name = 'dialog'
       return this.mode === 'EDIT' ? `修改${name}` : `新增${name}`
     }
   },
@@ -94,7 +96,7 @@ export default create({
     handleOpen(form = {}, mode) {
       this.mode = mode
       this.form = Object.assign(deepClone(FORM), form)
-      this.$refs.form.clearValidate()
+      this.$refs.form && this.$refs.form.clearValidate()
       this.open = true
     },
 

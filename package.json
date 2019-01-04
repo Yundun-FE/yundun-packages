@@ -1,7 +1,23 @@
 {
-  "name": "root",
+  "name": "yundun-packages",
   "private": true,
   "devDependencies": {
     "lerna": "^3.4.3"
-  }
+  },
+  "version": "1.0.0",
+  "main": ".eslintrc.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xanke/yundun-packages.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/xanke/yundun-packages/issues"
+  },
+  "homepage": "https://github.com/xanke/yundun-packages#readme",
+  "description": ""
 }
