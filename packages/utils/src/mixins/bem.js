@@ -1,6 +1,6 @@
 const ELEMENT = '__'
 const MODS = '--'
-
+ 
 const join = (name, el, symbol) => (el ? name + symbol + el : name)
 
 const prefix = (name, mods) => {
