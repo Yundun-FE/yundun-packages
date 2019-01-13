@@ -1,12 +1,12 @@
 {
   "name": "@yundun-fe/utils",
   "version": "0.0.2",
-  "description": "",
+  "description": "fe-utils",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
-  "gitHead": "818d84dafd28971d31aacdf58f7a9eab81aba734"
+  "gitHead": "50687f03f7e20575c1dd03d21c94f07b73519fa8"
 }
