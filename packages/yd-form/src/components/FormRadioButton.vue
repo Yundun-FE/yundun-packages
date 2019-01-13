@@ -1,7 +1,7 @@
 <template>
   <el-radio-group
     v-model="val"
-    size="small"
+    :size="size"
     :disabled="disabled"
   >
     <el-radio-button
@@ -23,7 +23,7 @@ export default create({
   props: {
     size: {
       type: String,
-      default: ''
+      default: 'small'
     },
     border: {
       type: Boolean,

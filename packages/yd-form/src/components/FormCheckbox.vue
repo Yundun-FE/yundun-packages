@@ -1,5 +1,8 @@
 <template>
-  <el-checkbox-group v-model="val">
+  <el-checkbox-group
+    v-model="val"
+    :size="size"
+  >
     <el-checkbox
       v-for="item in checks"
       :key="item.value"
@@ -18,7 +21,7 @@ export default create({
   props: {
     size: {
       type: String,
-      default: ''
+      default: 'small'
     },
     checks: {
       type: Array,

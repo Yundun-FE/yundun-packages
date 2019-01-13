@@ -35,7 +35,7 @@ export default create({
     defaultText: String,
     size: {
       type: String,
-      default: ''
+      default: 'small'
     },
     selects: {
       type: Array,

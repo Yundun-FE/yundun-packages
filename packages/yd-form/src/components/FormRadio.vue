@@ -1,5 +1,8 @@
 <template>
-  <el-radio-group v-model="val">
+  <el-radio-group
+    v-model="val"
+    :size="size"
+  >
     <el-radio
       v-for="item in radios"
       :key="item.value"
@@ -20,7 +23,7 @@ export default create({
     disabled: Boolean,
     size: {
       type: String,
-      default: ''
+      default: 'small'
     },
     border: {
       type: Boolean,
