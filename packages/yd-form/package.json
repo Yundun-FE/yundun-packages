@@ -1,13 +1,11 @@
 {
   "name": "@yundun-fe/yd-form",
-  "version": "1.0.1",
+  "version": "0.0.3",
   "description": "element-ui form extend",
   "main": "index.js",
   "scripts": {
-    "test":
-      "cross-env BABEL_ENV=test ./node_modules/.bin/karma start test/karma.config.js",
-    "test:watch":
-      "cross-env BABEL_ENV=test ./node_modules/.bin/karma start test/karma.config.js --single-run=false",
+    "test": "cross-env BABEL_ENV=test ./node_modules/.bin/karma start test/karma.config.js",
+    "test:watch": "cross-env BABEL_ENV=test ./node_modules/.bin/karma start test/karma.config.js --single-run=false",
     "lint": "./node_modules/.bin/eslint --ext .js,.vue src spec",
     "build": "./node_modules/.bin/webpack --hide-modules -p --progress",
     "report-coverage": "codecov"
@@ -32,18 +30,27 @@
           "uglify": true,
           "modules": false,
           "targets": {
-            "browsers": ["> 1%", "last 2 versions", "not ie <= 8"]
+            "browsers": [
+              "> 1%",
+              "last 2 versions",
+              "not ie <= 8"
+            ]
           }
         }
       ]
     ],
     "env": {
       "test": {
-        "plugins": ["istanbul"]
+        "plugins": [
+          "istanbul"
+        ]
       }
     }
   },
   "eslintConfig": {
-    "extends": ["eslint:recommended", "plugin:vue/recommended"]
+    "extends": [
+      "eslint:recommended",
+      "plugin:vue/recommended"
+    ]
   }
 }
