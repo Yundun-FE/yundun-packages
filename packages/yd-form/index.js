@@ -1,4 +1,4 @@
-import Form from './src/components/FormSelect'
+import Form from './src'
 
 function install(Vue) {
   if (install.installed) {
