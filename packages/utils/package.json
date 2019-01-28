@@ -1,6 +1,6 @@
 {
   "name": "@yundun-fe/utils",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "fe-utils",
   "main": "index.js",
   "scripts": {
