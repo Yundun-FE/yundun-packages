@@ -1,4 +1,4 @@
-import { formatSeconds } from '@/utils/date'
+import { formatSeconds } from '../../utils/date'
 export function labelView(value, origin, label = 'label', noknow = '未知') {
   if (!origin) return
 

@@ -1,4 +1,4 @@
-import Fetch from '@/utils/fetch'
+import Fetch from '../utils/fetch'
 
 export default {
   data() {

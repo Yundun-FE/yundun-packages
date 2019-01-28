@@ -1,6 +1,3 @@
-<style lang="postcss" scoped>
-</style>
-
 <template>
   <Dialog
     :class="b()"

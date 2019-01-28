@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import createDialog from '@/utils/create-dialog'
+import createDialog from '../../../utils/create-dialog'
 
 export default createDialog({
 })

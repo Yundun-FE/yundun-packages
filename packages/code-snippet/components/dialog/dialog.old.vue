@@ -1,6 +1,3 @@
-<style lang="postcss" scoped>
-</style>
-
 <template>
   <yd-dialog :class="b()" :title="title" :visible.sync="open" v-loading :close-on-click-modal="true" aside aside-type="top">
     <div slot="footer">

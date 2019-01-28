@@ -1,6 +1,6 @@
 import axios from 'axios'
 import { Message, MessageBox } from 'element-ui'
-import Retry from '@/utils/retry.js'
+import Retry from './retry.js'
 
 let networkError = false
 

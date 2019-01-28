@@ -1,8 +1,8 @@
 // 控制台表单，用于读取表单配置和常规表单提交
 
-import Fetch from '@/utils/fetch'
-import Notice from '@/utils/notice'
-import { deepClone, isDef } from '@/utils'
+import Fetch from '../utils/fetch'
+import Notice from '../utils/notice'
+import { deepClone, isDef } from '../utils'
 import { merge } from 'lodash/object'
 
 function formatForm(data) {

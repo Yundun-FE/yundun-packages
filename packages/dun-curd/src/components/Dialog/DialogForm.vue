@@ -23,9 +23,9 @@
 </template>
 
 <script>
-import create from '@/utils/create-basic'
-import dialog from '@/mixins/dialog'
-import form from '@/mixins/form'
+import create from '../../utils/create-basic'
+import dialog from '../../mixins/dialog'
+import form from '../../mixins/form'
 
 export default create({
   name: 'DialogForm',

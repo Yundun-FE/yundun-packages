@@ -1,5 +1,3 @@
-<style lang="postcss">
-</style>
 <template>
   <div>
     <!-- {{ info }} -->

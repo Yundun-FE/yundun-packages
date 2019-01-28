@@ -1,6 +1,5 @@
 import request from './request'
-import { SERVER_URL } from '@/utils/constants/server'
-const base = SERVER_URL['explorer']
+const base = '/'
 
 export default {
   post(url, data, params) {

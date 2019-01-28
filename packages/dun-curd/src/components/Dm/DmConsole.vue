@@ -139,7 +139,7 @@
 </template>
 
 <script>
-import create from '@/utils/create-basic'
+import create from '../../utils/create-basic'
 import RenderTable from './RenderTable'
 
 export default create({

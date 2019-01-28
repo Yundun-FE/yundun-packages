@@ -57,9 +57,9 @@
 </template>
 
 <script>
-import create from 'common/utils/create-basic'
-import formTable from '@/mixins/formTable'
-import Notice from '@/utils/notice'
+import create from '../../utils/create-basic'
+import formTable from '../../mixins/formTable'
+import Notice from '../../utils/notice'
 import DialogFastAdd from './components/DialogFastAdd'
 
 export default create({

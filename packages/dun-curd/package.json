@@ -20,7 +20,14 @@
     "babel-plugin-transform-vue-jsx": "3.5.0",
     "babel-preset-env": "1.6.1",
     "babel-preset-stage-2": "6.24.1",
-    "vue": "^2.5.17"
+    "vue": "^2.5.17",
+    "postcss": "^7.0.5",
+    "postcss-advanced-variables": "^2.3.3",
+    "postcss-inject": "^1.0.1",
+    "postcss-loader": "2.1.6",
+    "postcss-preset-env": "^6.1.1",
+    "postcss-scss": "^2.0.0",
+    "postcss-url": "7.3.2"
   },
   "babel": {
     "presets": [
@@ -56,5 +63,6 @@
   "dependencies": {
     "vue-loader": "^15.5.1",
     "vue-template-compiler": "^2.5.17"
-  }
+  },
+  "gitHead": "40a26f9e6e7db71eb20edc41cc671f7f27242883"
 }

@@ -1,6 +1,4 @@
-import {
-  deepClone
-} from '@/utils'
+import { deepClone } from '../utils'
 
 export default {
   data() {

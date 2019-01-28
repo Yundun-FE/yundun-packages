@@ -2,9 +2,9 @@
  * Create a cudr component with common options
  */
 
-import app from '@/mixins/app'
-import consolePage from '@/mixins/consolePage'
-import consoleCudr from '@/mixins/consoleCudr'
+import app from '../mixins/app'
+import consolePage from '../mixins/consolePage'
+import consoleCudr from '../mixins/consoleCudr'
 import { isDef } from './'
 
 const install = function(Vue) {

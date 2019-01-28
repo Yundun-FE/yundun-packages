@@ -18,7 +18,7 @@
 </template>
 
 <script>
-import create from 'common/utils/create-basic'
+import create from '../../utils/create-basic'
 
 export default create({
   name: 'HeaderTab',
