@@ -1,0 +1,60 @@
+{
+  "name": "@yundun-fe/dun-curd",
+  "version": "0.0.5",
+  "description": "dun curd",
+  "main": "index.js",
+  "scripts": {
+    "test": "cross-env BABEL_ENV=test ./node_modules/.bin/karma start test/karma.config.js",
+    "test:watch": "cross-env BABEL_ENV=test ./node_modules/.bin/karma start test/karma.config.js --single-run=false",
+    "lint": "./node_modules/.bin/eslint --ext .js,.vue src spec",
+    "build": "./node_modules/.bin/webpack --hide-modules -p --progress",
+    "report-coverage": "codecov"
+  },
+  "devDependencies": {
+    "babel-core": "6.26.0",
+    "babel-eslint": "8.0.3",
+    "babel-helper-vue-jsx-merge-props": "2.0.3",
+    "babel-loader": "7.1.2",
+    "babel-plugin-syntax-jsx": "6.18.0",
+    "babel-plugin-transform-runtime": "6.23.0",
+    "babel-plugin-transform-vue-jsx": "3.5.0",
+    "babel-preset-env": "1.6.1",
+    "babel-preset-stage-2": "6.24.1",
+    "vue": "^2.5.17"
+  },
+  "babel": {
+    "presets": [
+      [
+        "env",
+        {
+          "uglify": true,
+          "modules": false,
+          "targets": {
+            "browsers": [
+              "> 1%",
+              "last 2 versions",
+              "not ie <= 8"
+            ]
+          }
+        }
+      ]
+    ],
+    "env": {
+      "test": {
+        "plugins": [
+          "istanbul"
+        ]
+      }
+    }
+  },
+  "eslintConfig": {
+    "extends": [
+      "eslint:recommended",
+      "plugin:vue/recommended"
+    ]
+  },
+  "dependencies": {
+    "vue-loader": "^15.5.1",
+    "vue-template-compiler": "^2.5.17"
+  }
+}
