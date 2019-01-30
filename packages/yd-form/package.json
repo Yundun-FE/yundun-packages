@@ -1,6 +1,6 @@
 {
   "name": "@yundun-fe/yd-form",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "element-ui form extend",
   "main": "index.js",
   "scripts": {
@@ -20,11 +20,11 @@
     "babel-plugin-transform-vue-jsx": "3.5.0",
     "babel-preset-env": "1.6.1",
     "babel-preset-stage-2": "6.24.1",
-    "vue": "^2.4.2",
     "eslint": "4.19.1",
     "eslint-friendly-formatter": "4.0.1",
     "eslint-loader": "2.0.0",
-    "eslint-plugin-vue": "4.7.1"
+    "eslint-plugin-vue": "4.7.1",
+    "vue": "^2.4.2"
   },
   "babel": {
     "presets": [
