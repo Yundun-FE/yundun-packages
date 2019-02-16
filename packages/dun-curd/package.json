@@ -1,6 +1,6 @@
 {
   "name": "@yundun-fe/dun-curd",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "dun curd",
   "main": "index.js",
   "scripts": {
