@@ -1,4 +1,4 @@
-<style lang="postcss">
+<style lang="scss">
 </style>
 <template>
   <div/>

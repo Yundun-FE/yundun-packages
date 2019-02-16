@@ -1,4 +1,4 @@
-<style lang="postcss">
+<style lang="scss">
 .FormSearch {
   width: 200px !important;
 }

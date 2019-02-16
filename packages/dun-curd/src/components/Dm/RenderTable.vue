@@ -2,12 +2,12 @@
 import create from '../../utils/create-basic'
 
 export default create({
-  name: 'DmTable',
+  name: 'RenderTable',
 
   render(createElement) {
     const columnsRender = []
 
-    if (this.actions && this.actions.multiple || this.selection) {
+    if (this.selection) {
       columnsRender.push(
         createElement('el-table-column', {
           props: {
@@ -19,13 +19,13 @@ export default create({
     }
 
     this.columns.forEach(column => {
-      const { tag = 'el-table-column', props = {}, componentName, componentProps = {}} = column
-
+      const { props = {}, componentName, componentProps = {}} = column
       let scopedSlots = {}
       if (componentName) {
         const props = componentProps
-        if (componentName === 'ColumnAction' && this.actions && this.actions.row) {
-          props.list = this.actions.row.list
+        if (componentName === 'ColumnAction' && this.actionsRow) {
+          props.list = this.actionsRow
+          props.commandPrefix = 'Row'
         }
         scopedSlots = {
           default: scope => createElement(componentName, {
@@ -41,6 +41,10 @@ export default create({
         }
       }
 
+      if (column.tooptip) {
+        props.renderHeader = this.renderHeader(column.props.label, column.tooltip)
+      }
+
       columnsRender.push(
         createElement('el-table-column', {
           props,
@@ -48,29 +52,38 @@ export default create({
         })
       )
     })
-
+    
     columnsRender.push(
       this.$slots.default
     )
 
     return createElement('el-table', {
       on: {
-        'selection-change': val => this.$emit('selection-change', val)
+        'selection-change': val => this.$emit('selection-change', val),
+        'header-click': val => this.$emit('header-click', val)
       },
       props: {
-        'border': this.border,
-        'data': this.data,
-        'size': this.size
+        showHeader: this.showHeader,
+        border: this.border,
+        data: this.data,
+        size: this.size,
+        emptyText: this.emptyText
       }
     }, columnsRender)
   },
 
   props: {
     selection: Boolean,
+    showHeader: {
+      type: Boolean,
+      default: true
+    },
     border: Boolean,
-    actions: {
-      type: Object,
-      default: () => { }
+    actionsRow: {
+      type: Array,
+      default: function() {
+        return []
+      }
     },
     size: {
       type: String,
@@ -78,11 +91,28 @@ export default create({
     },
     data: {
       type: Array,
-      default: () => []
+      default: function() {
+        return []
+      }
     },
+    emptyText: String,
     columns: {
       type: Array,
-      default: () => []
+      default: function() {
+        return []
+      }
+    }
+  },
+
+  methods: {
+    // TODO
+    renderHeader(h, { column, $index }, index) {
+      return h('span', {}, [
+        h('span', {}, '时间片段'),
+        h('el-popover', { props: { placement: 'top-start', width: '200', trigger: 'hover', content: '领先/落后品类=单店平均单量-该品类城市店均单量' }}, [
+          h('i', { slot: 'reference', class: 'el-icon-question' }, '')
+        ])
+      ])
     }
   }
 })

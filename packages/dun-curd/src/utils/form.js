@@ -1,5 +1,4 @@
-import { isArray } from './array'
-
+import { isDef } from './'
 // 选择器排除器
 export const selectExclude = function(list, exclude = []) {
   list.forEach(item => {
@@ -82,8 +81,6 @@ export function exportValidateMessage(obj) {
 
 // 将选择参数转为标准格式（主要用于服务端 API 转换）
 export function selectLabelFormat(list, name, cfg) {
-  const _isArray = isArray(list)
-
   const VARS = {}
   const LIST = []
   // 转标准格式
@@ -93,7 +90,7 @@ export function selectLabelFormat(list, name, cfg) {
     VARS[key] = k
 
     const label = name ? item[name] : item
-    const value = _isArray ? item : k
+    const value = Array.isArray(list) ? item : k
 
     const add = {
       label,
@@ -113,11 +110,11 @@ export function selectLabelToObj(list) {
   return obj
 }
 
-export function formatLabel(list, labelName, valueName) {
+export function formatLabel(list, labelName, valueName = labelName) {
   return list.map(_ => {
     return {
       label: _[labelName] || _,
-      value: _[valueName] || _[labelName] || _
+      value: isDef(_[valueName]) ? _[valueName] : _
     }
   })
 }

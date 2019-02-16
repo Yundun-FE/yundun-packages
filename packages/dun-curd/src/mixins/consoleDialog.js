@@ -1,4 +1,4 @@
-import { merge } from 'lodash/object'
+import { isDef } from '../utils'
 
 export default {
   props: {
@@ -16,18 +16,18 @@ export default {
       this.$refs.Dialog.handleClose()
     },
 
-    handleOpen(form) {
-      if (form) {
+    handleOpen(form = {}) {
+      this.initFormLayout && this.initFormLayout()
+      Object.assign(this.FORM, this.bindForm)
+
+      this.handleReset()
+      if (isDef(form.id)) {
         this.mode = 'Edit'
-        this.form = form
-        console.log(form)
-        if (form.id) this.id = form.id
       } else {
         this.mode = 'Create'
-        this.id = ''
-        Object.assign(this.FORM, this.bindForm)
-        this.handleReset()
       }
+
+      Object.assign(this.form, form)
       this.$refs.Dialog.handleOpen(form)
     }
   }

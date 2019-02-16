@@ -1,22 +1,38 @@
-<style lang="postcss">
+<style lang="scss">
 .DmEdit {
   padding: 20px 30px;
   min-height: 300px;
+
   .Card--action {
-    .Card__body {
-      min-height: 300px;
-    }
   }
+
   .BlockForm {
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
     margin-bottom: 20px;
+  }
+
+  &--fixed {
+    margin-bottom: 50px;
+
+    .Card__footer{
+      position: fixed;
+      bottom: 0px;
+      right: 0px;
+      left: 200px;
+      z-index: 100;
+      border-top: 1px solid #EEE;
+      padding: 12px 30px;
+    }
   }
 }
 </style>
 
 <template>
-  <div :class="b()">
-    <Card theme="action">
+  <div :class="b({ fixed })">
+    <Card
+      :title="title"
+      theme="action"
+    >
       <el-form
         ref="form"
         :model="form"
@@ -51,12 +67,14 @@ export default create({
   mixins: [form],
 
   props: {
-    backButton: Boolean
+    backButton: Boolean,
+    title: '',
+    fixed: Boolean
   },
 
   provide() {
     return {
-      dmForm: this
+      dmEdit: this
     }
   },
 

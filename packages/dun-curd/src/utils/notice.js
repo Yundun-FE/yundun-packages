@@ -1,4 +1,4 @@
-import { Notification } from 'element-ui'
+import { Message } from 'element-ui'
 
 function notice(name, err) {
   let type = 'success'
@@ -43,7 +43,7 @@ function notice(name, err) {
     message = `${message}: ${err.message}`
   }
 
-  Notification({
+  Message({
     title,
     message,
     type

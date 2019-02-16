@@ -20,7 +20,7 @@ export default {
 }
 </script>
 
-<style lang="postcss">
+<style lang="scss">
 .iconStatus {
   display: inline-block;
   font-size: 12px;

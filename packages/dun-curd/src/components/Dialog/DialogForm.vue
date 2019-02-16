@@ -40,6 +40,10 @@ export default create({
     titleLabel: {
       type: String,
       default: ''
+    },
+    mode: {
+      type: String,
+      default: 'Create'
     }
   },
 

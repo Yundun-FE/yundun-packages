@@ -3,6 +3,7 @@
     <el-table
       :data="data"
       :show-header="showHeader"
+      :size="size"
       border
     >
       <slot />
@@ -14,20 +15,24 @@
         <template slot-scope="scope">
           <template v-if="sort">
             <el-button
+              :size="size"
               type="text"
               @click="handleRowUp(scope.$index)"
             >上移</el-button>
             <el-button
+              :size="size"
               type="text"
               @click="handleRowDown(scope.$index)"
             >下移</el-button>
           </template>
           <el-button
             v-if="editRow"
+            :size="size"
             type="text"
             @click="handleEditRow(scope)"
           >编辑</el-button>
           <el-button
+            :size="size"
             type="text"
             @click="handleRowDelete(scope.$index)"
           >删除</el-button>
@@ -36,16 +41,26 @@
     </el-table>
     <div style="margin-top: 12px">
       <slot name="add-form" />
-
       <el-dropdown
+        v-if="showAddRow"
+        :size="size"
         split-button
         type="primary"
+        trigger="click"
         @click="handleRowAdd"
         @command="handleAddRowComand"
       >
         新增
         <el-dropdown-menu slot="dropdown">
-          <el-dropdown-item command="Import">导入</el-dropdown-item>
+          <el-dropdown-item
+            v-for="(item, index) in rowTemplate"
+            :key="index"
+            :command="item"
+          >{{ item.label }}</el-dropdown-item>
+          <el-dropdown-item
+            divided
+            command="Import"
+          >导入</el-dropdown-item>
         </el-dropdown-menu>
       </el-dropdown>
     </div>
@@ -70,9 +85,20 @@ export default create({
   mixins: [formTable],
 
   props: {
+    showAddRow: {
+      type: Boolean,
+      default: true
+    },
     editRow: Boolean,
+    // 启用排序按钮
     sort: Boolean,
+    // 快捷添加行
+    rowTemplate: Array,
     customAddRow: Boolean,
+    size: {
+      type: String,
+      default: 'small'
+    },
     showHeader: {
       type: Boolean,
       default: true
@@ -115,8 +141,12 @@ export default create({
     },
 
     handleAddRowComand(cmd) {
-      if (cmd === 'Import') {
-        this.$refs.DialogFastAdd.handleOpen()
+      if (typeof cmd === 'string') {
+        if (cmd === 'Import') {
+          this.$refs.DialogFastAdd.handleOpen()
+        }
+      } else {
+        this.data.push(cmd.row)
       }
     },
 

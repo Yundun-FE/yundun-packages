@@ -1,7 +1,8 @@
-<style lang="postcss">
+<style lang="scss">
 .DmConsole {
   padding: 20px 30px;
-
+  display: flex;
+  flex-flow: column;
   .el-table th {
     background: rgb(249, 251, 255);
   }
@@ -9,19 +10,17 @@
   &__toolbar {
     width: 100%;
     margin-bottom: 12px;
-    overflow: hidden;
   }
 
   &__core {
-    width: 100%;
+    display: flex;
+    flex-flow: column;
     background: #fff;
     border-radius: 3px;
-    overflow: hidden;
     border: 1px solid rgba(0, 0, 0, 0.1);
   }
 
   &__body {
-    width: 100%;
     min-height: 500px;
     .el-table {
       min-height: 500px;
@@ -38,7 +37,6 @@
   }
 
   &__footer {
-    overflow: hidden;
     padding: 12px;
 
     .el-pagination {
@@ -50,7 +48,6 @@
 
 <template>
   <div
-    v-if="show"
     :class="b()"
     element-loading-text="加载中"
     element-loading-spinner="el-icon-loading"
@@ -60,35 +57,16 @@
     </div>
     <!-- 操作条 -->
     <div :class="b('toolbar')">
-      <!-- 操作按钮 -->
-      <template v-if="actions.toolbar">
-        <el-button
-          v-for="(item, index) in actions.toolbar.list"
-          v-if="item.label"
-          :key="index"
-          :type="item.type"
-          size="medium"
-          @click="handleAction(item.command)"
-        >{{ item.label }}</el-button>
-      </template>
-      <!-- 批量操作按钮 -->
-      <template v-if="actions.multiple">
-        <el-button
-          v-for="(item, index) in actions.multiple.list"
-          v-if="item.label"
-          :key="`multiple-${index}`"
-          :type="item.type"
-          :disabled="multipleSelection.length === 0"
-          size="medium"
-          @click="handleAction({ command: item.command, mode: 'Multiple'})"
-        >{{ item.label }}</el-button>
-      </template>
+      <ColumnAction
+        :list="actionsToolbar"
+        @action="handleAction"
+      />
       <div class="pull-right">
-        <slot name="toolbar-right"/>
-        <FormSearch
+        <slot name="toolbar-right" />
+        <!-- <FormSearch
           size="medium"
           @submit="handleSearch"
-        />
+        /> -->
         <!-- <el-tooltip
           content="布局配置"
           placement="top"
@@ -112,14 +90,12 @@
         <RenderTable
           v-if="columns && columns.length > 0"
           :columns="columns"
-          :selection="selection"
-          :actions="actions"
+          :selection="tableSelection"
+          :actions-row="actionsRow"
           :data="data"
           @action="handleAction"
           @selection-change="handleSelectionChange"
-        >
-          <slot />
-        </RenderTable>
+        />
       </div>
       <!-- FOOTER -->
       <div :class="b('footer')">
@@ -148,7 +124,6 @@ export default create({
   components: { RenderTable },
 
   props: {
-    selection: Boolean,
     data: {
       type: Array,
       default: function() {
@@ -171,16 +146,26 @@ export default create({
         return []
       }
     },
+    selection: {
+      type: Boolean,
+      default: false
+    },
     columns: {
       type: Array,
       default: function() {
         return []
       }
     },
-    actions: {
-      type: Object,
+    actionsRow: {
+      type: Array,
       default: function() {
-        return {}
+        return []
+      }
+    },
+    actionsToolbar: {
+      type: Array,
+      default: function() {
+        return []
       }
     }
   },
@@ -197,6 +182,26 @@ export default create({
     }
   },
 
+  computed: {
+    tableSelection() {
+      let op = false
+      if (this.selection) {
+        op = true
+      } else {
+        this.actionsToolbar.forEach(item => {
+          if (item.command.includes('Multiple')) op = true
+        })
+      }
+      return op
+    }
+  },
+
+  // watch: {
+  //   actionsToolbar(val) {
+  //     this.selection = false
+  //   }
+  // },
+
   mounted() {
     this.handleEmit()
   },
@@ -205,7 +210,6 @@ export default create({
     handleShow() {
       this.show = true
     },
-
     handleAction(e) {
       if (!e) return
       this.$emit('action', e)

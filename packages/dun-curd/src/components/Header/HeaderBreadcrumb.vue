@@ -1,4 +1,4 @@
-<style lang="postcss">
+<style lang="scss">
 .HeaderBreadcrumb{
   background: #FFF;
   padding: 20px 30px;
@@ -59,7 +59,6 @@ export default create({
 
   methods: {
     formatUrl(url) {
-      console.log(this.$route)
       const { params } = this.$route
       Object.keys(params).forEach(key => {
         url = url.replace(`:${key}`, params[key])
@@ -69,7 +68,6 @@ export default create({
 
     getBreadcrumb() {
       const matched = this.$route.matched // .filter(item => item.name)
-      console.log(this.$route.matched)
       this.levelList = matched
     }
   }

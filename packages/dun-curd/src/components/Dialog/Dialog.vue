@@ -1,4 +1,4 @@
-<style lang="postcss">
+<style lang="scss">
 .Dialog {
   .el-dialog {
     border-radius: 0px !important;

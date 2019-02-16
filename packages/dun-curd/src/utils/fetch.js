@@ -1,5 +1,5 @@
 import request from './request'
-const base = '/'
+const base = 'api'
 
 export default {
   post(url, data, params) {

@@ -1,4 +1,4 @@
-<style lang="postcss">
+<style lang="scss">
 .Card {
   position: relative;
   background: #fff;
@@ -10,7 +10,7 @@
   &--action {
     .Card {
       &__header {
-        padding: 12px 24px;
+        padding: 8px 22px;
         background: rgb(244, 246, 249);
       }
 
@@ -29,8 +29,9 @@
   h2.Card__title {
     font-weight: 500;
     color: rgb(47, 48, 51);
+    margin: 0px;
     font-size: 18px;
-    margin-bottom: 12px;
+    line-height: 38px;
   }
 
   &__body {
@@ -38,8 +39,6 @@
     height: 100%;
   }
 
-  &__footer {
-  }
 }
 </style>
 

@@ -1,4 +1,4 @@
-<style lang="postcss">
+<style lang="scss">
 </style>
 
 <template>
@@ -42,6 +42,7 @@ export default create({
       this.activeName = data.name
       this.$router.push({
         path: '../' + data.path,
+        query: this.$route.query,
         append: true
       })
     }

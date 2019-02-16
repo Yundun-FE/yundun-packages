@@ -1,6 +1,6 @@
-<style lang="postcss">
+<style lang="scss">
 .Page {
-  min-height: calc(100vh - 64px);
+  min-height: 500px; //calc(100vh - 64px);
 
   &-header {
     padding: 12px;

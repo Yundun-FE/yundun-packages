@@ -1,4 +1,4 @@
-<style lang="postcss">
+<style lang="scss">
 .ColumnAction{
   &__item{
     margin-right: 8px;
@@ -11,7 +11,7 @@
 </style>
 
 <template>
-  <div :class="b()">
+  <span :class="b()">
     <span
       v-for="(item, index) in list"
       :class="b('item')"
@@ -41,7 +41,7 @@
         @click="handleClick({command: item.command, scope, settings: item})"
       >{{ item.label }}</el-button>
     </span>
-  </div>
+  </span>
 </template>
 
 <script>
@@ -55,6 +55,7 @@ export default create({
       type: String,
       default: 'medium'
     },
+    commandPrefix: String,
     list: {
       type: Array,
       default: () => []
@@ -65,14 +66,9 @@ export default create({
     }
   },
 
-  data() {
-    return {
-    }
-  },
-
   methods: {
     handleClick(e) {
-      e.mode = 'Row'
+      e.command = this.commandPrefix ? `${this.commandPrefix}.${e.command}` : e.command
       this.$emit('action', e)
     }
   }
