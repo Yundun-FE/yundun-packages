@@ -20,13 +20,6 @@
     "babel-plugin-transform-vue-jsx": "3.5.0",
     "babel-preset-env": "1.6.1",
     "babel-preset-stage-2": "6.24.1",
-    "postcss": "^7.0.5",
-    "postcss-advanced-variables": "^2.3.3",
-    "postcss-inject": "^1.0.1",
-    "postcss-loader": "2.1.6",
-    "postcss-preset-env": "^6.1.1",
-    "postcss-scss": "^2.0.0",
-    "postcss-url": "7.3.2",
     "vue": "^2.5.17"
   },
   "babel": {

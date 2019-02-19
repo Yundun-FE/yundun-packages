@@ -6,8 +6,6 @@ import Card from './Card'
 import Dialog from './Dialog'
 import Table from './Table'
 import Header from './Header'
-import DmConsole from './Dm/DmConsole'
-import DmEdit from './Dm/DmEdit'
 
 function install(Vue) {
   if (install.installed) {
