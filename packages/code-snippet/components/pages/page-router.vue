@@ -4,15 +4,15 @@
     title=""
   >
     <NavbarPage
-      :data="navbar"
       slot="header"
-    ></NavbarPage>
-    <router-view></router-view>
+      :data="navbar"
+    />
+    <router-view/>
   </console-page-layout>
 </template>
 
 <script>
-import create from 'common/utils/create-basic'
+import create from '@/utils/create-basic'
 
 export default create({
   name: 'page',
