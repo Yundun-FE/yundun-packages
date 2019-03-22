@@ -1,23 +1,20 @@
 <template>
-  <console-page-layout
-    :title="title"
-    :class="b()"
-  >
+  <console-page-layout :class="b()">
     <DmToolbar>
       <div slot="right">
-        <InputSearch></InputSearch>
+        <InputSearch />
       </div>
     </DmToolbar>
     <DmData
       ref="DmData"
-      @init="init"
+      @init="fetchList"
     >
       <DmTable
-        min-height
         :loading="loading"
+        min-height
       >
         <el-table :data="list">
-          <el-table-column></el-table-column>
+          <el-table-column />
         </el-table>
       </DmTable>
     </DmData>
@@ -35,14 +32,13 @@ export default create({
 
   data() {
     return {
-      title: '',
-      params: {}
+      API_NAME: '',
+      bindParams: {}
     }
   },
 
   methods: {
     formatResponse(response) {
-
       return response
     }
   }
