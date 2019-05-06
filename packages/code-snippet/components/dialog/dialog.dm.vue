@@ -3,13 +3,13 @@
     ref="Dialog"
     :rule="rule"
     :option="option"
+    :fetch-submit="fetchSubmit"
     width="500px"
-    title=""
+    title="添加资产"
     @submit="handleSubmit"
   >
-    <yd-alert>
-
-    </yd-alert>
+    <!-- <yd-alert>
+    </yd-alert> -->
   </DmDialog>
 </template>
 
@@ -53,17 +53,24 @@ export default createDialog({
   },
 
   methods: {
-    async handleSubmit(form) {
+    beforeOpen() {
+      //
+    },
+
+    async fetchSubmit(form) {
       form = {
         ...form
       }
       try {
         await this.Fetch.post('', form)
       } catch (e) {
-        this.$refs.Dialog.resetSubmitLoading()
-        return
+        throw new Error()
       }
+    },
+
+    async handleSubmit(form) {
       this.Message('ACTION_SUCCESS')
+      this.$emit('init')
       this.handleClose()
     }
   }

@@ -13,7 +13,11 @@
         :loading="loading"
         min-height
       >
-        <el-table :data="list">
+        <el-table 
+          :data="list" 
+          @select="handleRowSelect"
+          @select-all="handleRowSelect"
+        >
           <el-table-column />
         </el-table>
       </DmTable>
@@ -32,15 +36,21 @@ export default create({
 
   data() {
     return {
-      API_NAME: '',
-      bindParams: {}
+      API_INDEX: '',
+      bindParams: {},
+      selectionId: []
     }
   },
 
   methods: {
     formatResponse(response) {
       return response
-    }
+    },
+
+    handleRowSelect(selection) {
+      this.selectionId = selection.map(_ => _.id)
+    },
+
   }
 })
 </script>
