@@ -18,6 +18,10 @@
           @select="handleRowSelect"
           @select-all="handleRowSelect"
         >
+                  <el-table-column
+            type="selection"
+            width="55"
+          />
           <el-table-column />
         </el-table>
       </DmTable>
