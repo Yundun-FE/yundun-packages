@@ -1,5 +1,5 @@
 <template>
-  <console-page-layout :class="b()">
+  <console-page-layout>
     <DmToolbar>
       <div slot="right">
         <InputSearch />
@@ -30,12 +30,9 @@
 </template>
 
 <script>
-import create from '@/utils/create-basic'
 import consoleData from '@/mixins/consoleData'
 
-export default create({
-  name: '',
-
+export default {
   mixins: [consoleData],
 
   data() {
@@ -56,5 +53,5 @@ export default create({
     },
 
   }
-})
+}
 </script>
