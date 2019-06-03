@@ -16,7 +16,7 @@
 
 <script>
 import RULE from '@/utils/verify'
-import createDialog from '@/mixins/createDialog'
+import createDialog from '@/utils/createDialog'
 
 export default createDialog({
   data() {
