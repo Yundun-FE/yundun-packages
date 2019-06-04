@@ -4,7 +4,9 @@ export default {
   computed: mapState({
     utime: state => state.report.utime
   }),
+
   methods: {
-    ...mapMutations(['SET_UTIME'])
+    ...mapMutations(['']),
+    ...mapActions([''])
   }
 }
