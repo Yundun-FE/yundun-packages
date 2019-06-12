@@ -14,15 +14,17 @@
         min-height
       >
         <el-table 
-          :data="list" 
-          @select="handleRowSelect"
-          @select-all="handleRowSelect"
+          :data="list"
         >
-                  <el-table-column
+          <el-table-column
             type="selection"
             width="55"
           />
-          <el-table-column />
+          <el-table-column 
+            label=""
+            prop=""
+            min-width="150"
+          />
         </el-table>
       </DmTable>
     </DmData>
@@ -50,8 +52,7 @@ export default {
 
     handleRowSelect(selection) {
       this.selectionId = selection.map(_ => _.id)
-    },
-
+    }
   }
 }
 </script>

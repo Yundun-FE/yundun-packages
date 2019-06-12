@@ -1,22 +1,15 @@
 <template>
-  <console-page-layout
-    :class="b()"
-    title=""
-  >
+  <console-page-layout>
     <NavbarPage
       slot="header"
       :data="navbar"
     />
-    <router-view/>
+    <router-view />
   </console-page-layout>
 </template>
 
 <script>
-import create from '@/utils/create-basic'
-
-export default create({
-  name: 'page',
-
+export default {
   data() {
     return {
       navbar: [
@@ -31,5 +24,5 @@ export default create({
       ]
     }
   }
-})
+}
 </script>

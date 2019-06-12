@@ -8,8 +8,7 @@
     title="添加资产"
     @submit="handleSubmit"
   >
-    <!-- <yd-alert>
-    </yd-alert> -->
+    <!--  -->
   </DmDialog>
 </template>
 
