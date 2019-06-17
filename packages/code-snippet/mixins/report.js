@@ -1,12 +1,19 @@
-import { mapMutations, mapState, mapActions } from 'vuex'
+import { mapMutations, mapState, mapActions, mapGetters } from 'vuex'
 
 export default {
-  computed: mapState({
-    utime: state => state.report.utime
-  }),
+  computed: {
+    ...mapState({
+      domainId: state => state.domain.id,
+      domainInfo: state => state.domain.info
+    })
+  },
 
   methods: {
-    ...mapMutations(['']),
-    ...mapActions([''])
+    ...mapMutations({
+      'DOMAIN_SET_ID': 'domain/SET_ID'
+    }),
+    ...mapActions({
+      'domainFetchInfo': 'domain/fetchInfo'
+    })
   }
 }
