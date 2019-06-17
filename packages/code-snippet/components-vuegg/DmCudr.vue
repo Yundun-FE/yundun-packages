@@ -16,13 +16,8 @@
 
 <script>
 import consoleData from '@/mixins/consoleData'
-import ColumnName from './components/ColumnName'
 
 export default {
-  components: {
-    ColumnName
-  },
-
   mixins: [consoleData],
 
   data() {
