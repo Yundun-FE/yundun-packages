@@ -13,18 +13,31 @@
         :loading="loading"
         min-height
       >
-        <el-table 
+        <el-table
           :data="list"
+          @select="handleRowSelect"
+          @select-all="handleRowSelect"
         >
           <el-table-column
             type="selection"
             width="55"
           />
-          <el-table-column 
+          <el-table-column
             label=""
             prop=""
             min-width="150"
           />
+          <el-table-column
+            label="操作"
+            align="right"
+            min-width="150"
+          >
+            <template slot-scope>
+              <ColumnAction>
+                <el-button>编辑</el-button>
+              </ColumnAction>
+            </template>
+          </el-table-column>
         </el-table>
       </DmTable>
     </DmData>

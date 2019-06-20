@@ -3,12 +3,14 @@
   "private": true,
   "devDependencies": {
     "commitizen": "^3.1.1",
+    "conventional-changelog": "^3.1.8",
     "cz-conventional-changelog": "^2.1.0",
     "lerna": "^3.4.3"
   },
   "version": "1.0.0",
   "main": ".eslintrc.js",
   "scripts": {
+    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -w -r 0",
     "commit": "git-cz",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

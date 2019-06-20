@@ -25,7 +25,7 @@ const rules = {
     pattern: RULE.ipReg,
     message: '格式有误',
     trigger: 'blur'
-  }
+  },
 
   email: [
     {

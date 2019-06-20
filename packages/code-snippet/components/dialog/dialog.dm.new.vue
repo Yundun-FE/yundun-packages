@@ -1,7 +1,6 @@
 <template>
   <DmDialog
     ref="Dialog"
-    :fetch-submit="fetchSubmit"
     width="500px"
     title="添加资产"
     @submit="handleSubmit"
@@ -11,33 +10,24 @@
 </template>
 
 <script>
-import RULE from '@/utils/verify'
 import createDialog from '@/utils/createDialog'
 
 export default createDialog({
   data() {
     return {
-      formData: {
+      formDefault: {
         name: ''
       },
-      rule: {
-        name: [
-          {
-
-          }
-        ]
-      }
     }
   },
 
   methods: {
-    beforeOpen() {
-      //
+    initOptions(options) {
     },
 
-    async fetchSubmit(form) {
-      form = {
-        ...this.formData
+    async fetchSubmit() {
+      const form = {
+        ...this.form
       }
       try {
         await this.Fetch.post('', form)
