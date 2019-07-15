@@ -1,6 +1,5 @@
 // https://github.com/yiminghe/async-validator
 
-
 function ipVaildate(rule, value, callback) {
   value = value.split(',')
   value.forEach(item => {
@@ -11,8 +10,6 @@ function ipVaildate(rule, value, callback) {
   callback()
 }
 
-// function arrValidate({min = 1, max =2, rule=''}) {
-// }
 
 const rules = {
   name: [
@@ -30,16 +27,17 @@ const rules = {
   email: [
     {
       required: true,
-      pattern: '',
-      type: 'regexp',
-      message: '请输入活动名称',
+      type: 'email',
+      message: '格式有误',
       trigger: 'blur'
     }
   ],
 
-  ports: [
+  ipList: [
     {
-      validator: ipVaildate, message:'IP 地址不正确', trigger: 'blur' 
+      validator: ipVaildate, 
+      message:'IP 地址不正确', 
+      trigger: 'blur' 
     }
   ]
 }

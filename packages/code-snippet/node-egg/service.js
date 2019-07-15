@@ -22,6 +22,8 @@ class ServiceService extends Service {
     return { id };
   }
 
+ 
+
   async updateById(id, data) {
     await this.Model.update(data, {
       where: { id },
