@@ -4,8 +4,8 @@ const moment = require('moment');
 module.exports = app => {
   const { INTEGER, STRING, BOOLEAN, DATE } = app.Sequelize;
 
-  const Model = app.model.define('shops', {
-    title: {
+  const Model = app.model.define('shopsCarts', {
+    expressName: {
       type: STRING(255),
       allowNull: false,
     },
@@ -26,9 +26,9 @@ module.exports = app => {
     },
   }, {
     indexes: [
-      {
-        fields: [ 'devopsId' ],
-      },
+      // {
+      //   fields: [ 'devopsId' ],
+      // },
     ],
   });
 

@@ -36,7 +36,7 @@
             align="right"
             min-width="150"
           >
-            <template slot-scop="scope">
+            <template slot-scope="scope">
               <ColumnAction>
                 <el-button @click="$refs.DialogRow.handleOpen(scope.row)">编辑</el-button>
               </ColumnAction>

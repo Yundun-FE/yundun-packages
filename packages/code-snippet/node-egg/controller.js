@@ -1,7 +1,3 @@
-'use strict';
-
-const Controller = require('egg').Controller;
-
 class Controller extends Controller {
   constructor(ctx) {
     super(ctx);
@@ -41,5 +37,3 @@ class Controller extends Controller {
     this.ctx.body = await this.Service.list(where);
   }
 }
-
-module.exports = Controller;

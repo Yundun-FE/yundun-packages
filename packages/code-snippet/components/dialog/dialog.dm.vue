@@ -16,7 +16,7 @@
 import RULE from '@/utils/verify'
 import createDialog from '@/utils/createDialog'
 
-export default createDialog({
+export default cr98eateDialog({
   data() {
     return {
       option: {
@@ -40,11 +40,12 @@ export default createDialog({
           props: {
             placeholder: '域名/IP'
           },
-          validate: [{
-            required: true,
-            message: '请输入资产地址',
-            trigger: 'blur'
-          }
+          validate: [
+            {
+              required: true,
+              message: '请输入资产地址',
+              trigger: 'blur'
+            }
           ]
         }
       ]
