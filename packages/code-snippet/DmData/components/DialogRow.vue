@@ -1,11 +1,26 @@
 <template>
   <DmDialog
     ref="Dialog"
+    :fetch-submit="fetchSubmit"
+    :mode="mode"
     width="500px"
-    title="添加资产"
+    title-label="角色"
     @submit="handleSubmit"
   >
-    <!--  -->
+    <el-form :model="form">
+      <el-form-item
+        label="Name"
+        prop="name"
+      >
+        <el-input v-model="form.name" />
+      </el-form-item>
+      <el-form-item
+        label="名称"
+        prop="title"
+      >
+        <el-input v-model="form.title" />
+      </el-form-item>
+    </el-form>
   </DmDialog>
 </template>
 
@@ -16,21 +31,28 @@ export default createDialog({
   data() {
     return {
       formDefault: {
-        name: ''
-      },
+        name: '',
+        title: ''
+      }
     }
   },
 
   methods: {
-    initOptions(options) {
+    initOptions(form, options) {
+      this.mode = form.id ? 'Edit' : 'Create'
     },
 
     async fetchSubmit() {
       const form = {
+        shopId: this.userInfo.shopId,
         ...this.form
       }
       try {
-        await this.Fetch.post('', form)
+        if (this.mode === 'Create') {
+          await this.Fetch.post('v1/admin/', form)
+        } else {
+          await this.Fetch.put(`v1/admin//${form.id}`, form)
+        }
       } catch (e) {
         throw new Error()
       }

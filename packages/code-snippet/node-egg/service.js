@@ -1,7 +1,3 @@
-'use strict';
-
-const Service = require('egg').Service;
-
 class ServiceService extends Service {
   constructor(ctx) {
     super(ctx);
@@ -21,8 +17,6 @@ class ServiceService extends Service {
     });
     return { id };
   }
-
- 
 
   async updateById(id, data) {
     await this.Model.update(data, {
