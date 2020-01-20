@@ -1,5 +1,5 @@
 {
-  "name": "workflow-api",
+  "name": "@yundun-fe/workflow-api",
   "version": "1.0.1",
   "description": "",
   "main": "index.js",
