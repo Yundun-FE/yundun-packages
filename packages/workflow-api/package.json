@@ -10,5 +10,6 @@
   "license": "ISC",
   "dependencies": {
     "axios": "^0.19.1"
-  }
+  },
+  "gitHead": "6ceb2dc5c6c09954d74a2f9e459b0f7f81333f4d"
 }
