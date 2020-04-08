@@ -1,12 +1,18 @@
+<style lang="scss">
+</style>
+
 <template>
-  <div>
+  <div :class="b()">
     <!--  -->
   </div>
 </template>
 
 <script>
+import create from '@/utils/create-basic'
 
-export default {
+export default create({
+  name: '',
+
   components: {},
 
   props: {},
@@ -18,5 +24,5 @@ export default {
   computed: {},
 
   methods: {}
-}
+})
 </script>

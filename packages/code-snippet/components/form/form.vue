@@ -14,8 +14,6 @@
         <el-input v-model="form.remark"></el-input>
       </el-form-item>
     </el-form>
-
-
   </div>
 </template>
 
