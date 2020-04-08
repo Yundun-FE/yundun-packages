@@ -1,16 +1,8 @@
-const Axios = require('axios')
+const { fetchAlert } = require('@yundun-fe/workflow-api')
 const parseChangelog = require('@yundun-fe/changelog-parser')
-const server = 'http://workflow.test.nodevops.cn'
+const PKG = require('../package.json')
 
-function fetchAlert (data) {
-  Axios({
-    url: `${server}/api/alert/wechatBot`,
-    method: 'POST',
-    data
-  })
-}
-
-function release (options) {
+parseChangelog('CHANGELOG.md', function (err, result) {
   if (err) throw err
 
   const { versions = [] } = result
@@ -31,9 +23,18 @@ function release (options) {
       }
     })
   }
+})
+
+function formatUpdateList (data) {
+  delete data._
+  let content = ``
+  Object.keys(data).forEach(key => {
+    content += `\n${key}：`
+    data[key].forEach(item => {
+      item = item.replace('* ', '')
+      content += `\n${item}`
+    })
+  })
+  return content
 }
 
-module.exports = {
-  fetchAlert,
-  release
-}
