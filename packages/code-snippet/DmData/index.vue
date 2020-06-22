@@ -6,7 +6,10 @@
         @click="$refs.DialogRow.handleOpen()"
       >新增</el-button>
       <div slot="right">
-        <InputSearch />
+        <InputSearch
+          v-model="bindParams.name"
+          @submit="handleSearch"
+        />
       </div>
     </DmToolbar>
     <DmData
@@ -19,8 +22,7 @@
       >
         <el-table
           :data="list"
-          @select="handleRowSelect"
-          @select-all="handleRowSelect"
+          @selection-change="handleRowSelect"
         >
           <el-table-column
             type="selection"
@@ -64,7 +66,9 @@ export default {
   data() {
     return {
       API_INDEX: '',
-      bindParams: {},
+      bindParams: {
+        name: ''
+      },
       selectionId: []
     }
   },
@@ -76,6 +80,20 @@ export default {
 
     handleRowSelect(selection) {
       this.selectionId = selection.map(_ => _.id)
+    },
+
+    handleAction() {
+      this.$confirm('确认操作?', '提示', {
+        type: 'warning'
+      }).then(async () => {
+        try {
+          // await this.Fetch.delete('V4/Web.ca.self.del', { ids: this.selectionId.join(',') })
+        } catch (e) {
+          return
+        }
+        this.Message('ACTION_SUCCESS')
+        this.fetchList()
+      })
     }
   }
 }

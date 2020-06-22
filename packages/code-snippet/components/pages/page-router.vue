@@ -1,11 +1,7 @@
 <template>
-  <console-page-layout>
-    <NavbarPage
-      slot="header"
-      :data="navbar"
-    />
+  <ConsolePageLayout :tabs="navbar">
     <router-view />
-  </console-page-layout>
+  </ConsolePageLayout>
 </template>
 
 <script>
@@ -14,12 +10,10 @@ export default {
     return {
       navbar: [
         {
-          label: '扫描列表',
-          to: 'list'
+          name: 'list'
         },
         {
-          label: '配置列表',
-          to: 'setting'
+          name: 'setting'
         }
       ]
     }

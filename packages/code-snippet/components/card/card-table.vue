@@ -1,5 +1,5 @@
 <template>
-  <yd-card title="">
+  <DmCard title="">
     <DmData
       :inner-card="false"
       ref="dmData"
@@ -13,7 +13,7 @@
         </el-table>
       </yd-table>
     </DmData>
-  </yd-card>
+  </DmCard>
 </template>
 
 <script>

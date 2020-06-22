@@ -1,69 +1,49 @@
-<style lang="postcss">
-</style>
-
 <template>
-  <console-page-layout
-    :title="title"
-    :class="b()"
-  >
+  <ConsolePageLayout>
     <DmToolbar>
-      <div slot="right">
-        <InputSearch></InputSearch>
-      </div>
+      <!--  -->
     </DmToolbar>
     <DmData
       ref="DmData"
-      @init="init"
-      class="margin-top"
+      @init="fetchList"
     >
       <DmTable
-        min-height
         :loading="loading"
-        size="medium"
+        min-height
       >
         <el-table :data="list">
-          <el-table-column></el-table-column>
+          <el-table-column
+            label="标题"
+            min-width="180"
+            prop="title"
+          />
+          <el-table-column
+            label="操作"
+            align="right"
+            width="200"
+          />
         </el-table>
       </DmTable>
     </DmData>
-  </console-page-layout>
+  </ConsolePageLayout>
 </template>
 
 <script>
-import create from 'common/utils/create-basic'
-import { formatList, mergeParams } from 'common/utils/response'
-import Fetch from 'common/api/fetch'
+import consoleData from '@/mixins/consoleData'
 
-export default create({
-  name: '',
+export default {
+  components: { },
+
+  mixins: [consoleData],
 
   data() {
     return {
-      title: '',
-      loading: true,
-      list: [],
-      params: {}
+      API_INDEX: '',
+      bindParams: {}
     }
   },
 
-  computed: {},
-
   methods: {
-    handleSearch() {
-      this.$refs.DmData.initPage()
-    },
-
-    async init(params) {
-      params = params || this.$refs.DmData.getParams()
-      this.loading = true
-      try {
-        // const { list, total } = formatList(await Fetch.get('', mergeParams(params, this.params)))
-        // this.list = list
-        // this.$refs.DmData.init({ total })
-      } finally {
-        this.loading = false
-      }
-    }
   }
-})
+}
 </script>
