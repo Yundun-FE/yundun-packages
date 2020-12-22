@@ -33,6 +33,9 @@ export default createDialog({
       formDefault: {
         name: '',
         title: ''
+      },
+      formRules: {
+        content: { required: true, message: '请输入' }
       }
     }
   },

@@ -1,10 +1,14 @@
 <template>
-  <console-page-layout>
+  <ConsolePageLayout>
     <DmToolbar>
       <el-button
         type="primary"
         @click="$refs.DialogRow.handleOpen()"
       >新增</el-button>
+      <el-button
+        :disabled="!multipleSelection.length"
+        @click="handleDelete"
+      >删除</el-button>
       <div slot="right">
         <InputSearch
           v-model="bindParams.name"
@@ -39,9 +43,9 @@
             min-width="150"
           >
             <template slot-scope="scope">
-              <ColumnAction>
-                <el-button @click="$refs.DialogRow.handleOpen(scope.row)">编辑</el-button>
-              </ColumnAction>
+              <el-button @click="$refs.DialogRow.handleOpen(scope.row)">编辑</el-button>
+              <el-divider direction="vertical" />
+              <el-button @click="handleDelete(scope.row.id)">删除</el-button>
             </template>
           </el-table-column>
         </el-table>
@@ -51,7 +55,7 @@
       ref="DialogRow"
       @init="fetchList"
     />
-  </console-page-layout>
+  </ConsolePageLayout>
 </template>
 
 <script>
@@ -73,6 +77,12 @@ export default {
     }
   },
 
+  computed: {
+    selectionId() {
+      return this.multipleSelection.map(_ => _.id)
+    }
+  },
+
   methods: {
     formatResponse(response) {
       return response
@@ -80,6 +90,20 @@ export default {
 
     handleRowSelect(selection) {
       this.selectionId = selection.map(_ => _.id)
+    },
+
+    handleDelete() {
+      this.$confirm('确认操作?', '提示', {
+        type: 'warning'
+      }).then(async () => {
+        try {
+          // await this.Fetch.delete('V4/Web.ca.self.del', { ids: this.selectionId.join(',') })
+        } catch (e) {
+          return
+        }
+        this.Message('ACTION_SUCCESS')
+        this.fetchList()
+      })
     },
 
     handleAction() {
