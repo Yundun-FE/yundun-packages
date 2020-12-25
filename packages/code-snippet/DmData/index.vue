@@ -26,7 +26,7 @@
       >
         <el-table
           :data="list"
-          @selection-change="handleRowSelect"
+          @selection-change="handleSelectionChange"
         >
           <el-table-column
             type="selection"
@@ -72,8 +72,7 @@ export default {
       API_INDEX: '',
       bindParams: {
         name: ''
-      },
-      selectionId: []
+      }
     }
   },
 
@@ -88,14 +87,10 @@ export default {
       return response
     },
 
-    handleRowSelect(selection) {
-      this.selectionId = selection.map(_ => _.id)
-    },
-
     handleDelete() {
       this.$confirm('确认操作?', '提示', {
         type: 'warning'
-      }).then(async () => {
+      }).then(async() => {
         try {
           // await this.Fetch.delete('V4/Web.ca.self.del', { ids: this.selectionId.join(',') })
         } catch (e) {
@@ -109,7 +104,7 @@ export default {
     handleAction() {
       this.$confirm('确认操作?', '提示', {
         type: 'warning'
-      }).then(async () => {
+      }).then(async() => {
         try {
           // await this.Fetch.delete('V4/Web.ca.self.del', { ids: this.selectionId.join(',') })
         } catch (e) {
